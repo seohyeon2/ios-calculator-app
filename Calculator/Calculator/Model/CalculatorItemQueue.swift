@@ -1,5 +1,5 @@
 struct CalculatorItemQueue<T>: CalculateItem {
-    private var calculateItems = LinkedList<T>()
+    private var calculateItems = DoublyLinkedList<T>()
     private var isEmpty: Bool {
         return (calculateItems.count == 0) ? true : false
     }

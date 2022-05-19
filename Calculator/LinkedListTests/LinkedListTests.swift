@@ -3,11 +3,11 @@ import XCTest
 
 class LinkedListTests: XCTestCase {
     // MARK: Setting
-    var sut: LinkedList<Double>!
+    var sut: DoublyLinkedList<Double>!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = LinkedList<Double>()
+        sut = DoublyLinkedList<Double>()
     }
     
     override func tearDownWithError() throws {
