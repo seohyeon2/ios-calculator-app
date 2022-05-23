@@ -18,7 +18,14 @@ class ViewController: UIViewController {
     @IBAction func tapNumbersButton(_ sender: UIButton) {
         if numbersButton.contains(sender) {
             let index = numbersButton.firstIndex(of: sender) ?? 0
-            let text = Keypad.matchNumber(index)
+            updateLable(text: Keypad.matchNumber(index))
+        }
+    }
+    
+    // TODO: 누른 숫자 번호 보여주기
+    func updateLable(text: String) {
+        DispatchQueue.main.async {
+            self.inputNumberLabel.text = text
         }
     }
     
