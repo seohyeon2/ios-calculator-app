@@ -76,6 +76,10 @@ class ViewController: UIViewController {
     
     // TODO: 부호바꾸는 버튼을 누르면 입력한 숫자의 부호가 바뀌게 하기
     @IBAction func tapToChangeSignButton(_ sender: UIButton) {
+        if numbers == "0" || numbers == "" {
+            return
+        }
+        
         if sign == "+" {
             numbers = "-" + numbers
             sign = "-"
