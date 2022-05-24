@@ -10,8 +10,13 @@ class ViewController: UIViewController {
     
     // TODO: 필요한 프로퍼티 가져오기
     @IBOutlet weak var inputNumberLabel: UILabel!
-    @IBOutlet weak var signLabel: UILabel!
+    @IBOutlet weak var operatorLabel: UILabel!
     @IBOutlet var numbersButton: [UIButton]!
+    @IBOutlet weak var additionButton: UIButton!
+    @IBOutlet weak var subtractionButton: UIButton!
+    @IBOutlet weak var multiplicationButton: UIButton!
+    @IBOutlet weak var divisionButton: UIButton!
+    @IBOutlet weak var resultButton: UIButton!
     
     // TODO: 숫자버튼을 한 곳에서 처리하는 메서드 생성
     // TODO: 어떤 버튼이 들어오는지 구별하기 -> UIOutletCollection, enum 사용
@@ -28,6 +33,24 @@ class ViewController: UIViewController {
             self.inputNumberLabel.text = text
         }
     }
+    
+    // TODO: 연산자버튼을 한 곳에서 처리하는 메서드 생성
+    // TODO: 어떤 연산자 버튼이 들어오는지 구별하기
+    @IBAction func tapOperatorsButton(_ sender: UIButton) {
+        switch sender {
+        case additionButton:
+            operatorLabel.text = String(Operator.add.rawValue)
+        case subtractionButton:
+            operatorLabel.text = String(Operator.subtract.rawValue)
+        case multiplicationButton:
+            operatorLabel.text = String(Operator.multiply.rawValue)
+        case divisionButton:
+            operatorLabel.text = String(Operator.divide.rawValue)
+        default:
+            return
+        }
+    }
+    
     
     // TODO: enum 따로 파일로 빼기
     enum Keypad: Int, CaseIterable {
