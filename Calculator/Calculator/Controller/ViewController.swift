@@ -18,12 +18,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var divisionButton: UIButton!
     @IBOutlet weak var resultButton: UIButton!
     
+    private var numbers = ""
+    
     // TODO: 숫자버튼을 한 곳에서 처리하는 메서드 생성
     // TODO: 어떤 버튼이 들어오는지 구별하기 -> UIOutletCollection, enum 사용
+    // TODO: 연산자 버튼을 누르기 전까지 숫자가 변경되게 하기
     @IBAction func tapNumbersButton(_ sender: UIButton) {
         if numbersButton.contains(sender) {
             let index = numbersButton.firstIndex(of: sender) ?? 0
-            updateLable(text: Keypad.matchNumber(index))
+            numbers += Keypad.matchNumber(index)
+            updateLable(text: numbers)
         }
     }
     
