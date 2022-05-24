@@ -34,11 +34,15 @@ class ViewController: UIViewController {
     
     // TODO: 빈 상태에서 00이 못 붙게 하기, 빈 상태에서 . 누르면 0.으로 바뀌게 하기, 0이 첫번째일 때 숫자가 오면 숫자가 첫번째로 되게 하기
     func checkInputNumbers(text: String) {
+        if numbers.contains(".") && text == "." {
+            return
+        }
+        
         if (numbers == "" || numbers == "0") && (text == "0" || text == "00") {
             numbers = "0"
         } else if numbers == "" && text == "." {
             numbers = "0."
-        } else if numbers == "0" {
+        } else if numbers == "0" && text != "."{
             numbers = text
         } else {
             numbers += text
