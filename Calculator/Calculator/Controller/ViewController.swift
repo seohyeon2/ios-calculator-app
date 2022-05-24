@@ -19,17 +19,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultButton: UIButton!
     
     private var numbers = ""
+    private var isEdit = true
     
     // TODO: 숫자버튼을 한 곳에서 처리하는 메서드 생성
     // TODO: 어떤 버튼이 들어오는지 구별하기 -> UIOutletCollection, enum 사용
     // TODO: 연산자 버튼을 누르기 전까지 숫자가 변경되게 하기
     @IBAction func tapNumbersButton(_ sender: UIButton) {
-        if numbersButton.contains(sender) {
-            let index = numbersButton.firstIndex(of: sender) ?? 0
-            let newInputNumbers = Keypad.matchNumber(index)
-            checkInputNumbers(text: newInputNumbers)
-            updateLable(text: numbers)
+        if !isEdit {
+            print(numbers)
+            numbers = ""
+            isEdit = true
         }
+        
+        let index = numbersButton.firstIndex(of: sender) ?? 0
+        let newInputNumbers = Keypad.matchNumber(index)
+        checkInputNumbers(text: newInputNumbers)
+        inputNumberLabel.text = numbers
     }
     
     // TODO: 빈 상태에서 00이 못 붙게 하기, 빈 상태에서 . 누르면 0.으로 바뀌게 하기, 0이 첫번째일 때 숫자가 오면 숫자가 첫번째로 되게 하기
@@ -52,7 +57,8 @@ class ViewController: UIViewController {
     // TODO: 누른 숫자 번호 보여주기
     func updateLable(text: String) {
         DispatchQueue.main.async {
-            self.inputNumberLabel.text = text
+            self.inputNumberLabel
+            self.operatorLabel
         }
     }
     
@@ -71,6 +77,8 @@ class ViewController: UIViewController {
         default:
             return
         }
+        
+        isEdit = false
     }
     
     
