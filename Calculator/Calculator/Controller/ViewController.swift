@@ -90,8 +90,13 @@ class ViewController: UIViewController {
         } else if sign == "-" {
             numbers = numbers.replacingOccurrences(of: "-", with: "")
             sign = "+"
-
         }
+    }
+    
+    // TODO: 입력한 값 모두 삭제하기
+    @IBAction func tapClearEntryButton(_ sender: UIButton) {
+        numbers = ""
+        inputNumberLabel.text = "0"
     }
     
     // TODO: enum 따로 파일로 빼기
