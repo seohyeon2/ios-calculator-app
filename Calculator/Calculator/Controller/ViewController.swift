@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     private var numbers = ""
     private var isEdit = true
+    private var sign = "+"
     
     // TODO: 숫자버튼을 한 곳에서 처리하는 메서드 생성
     // TODO: 어떤 버튼이 들어오는지 구별하기 -> UIOutletCollection, enum 사용
@@ -81,6 +82,17 @@ class ViewController: UIViewController {
         isEdit = false
     }
     
+    // TODO: 부호바꾸는 버튼을 누르면 입력한 숫자의 부호가 바뀌게 하기
+    @IBAction func tapToChangeSignButton(_ sender: UIButton) {
+        if sign == "+" {
+            numbers = "-" + numbers
+            sign = "-"
+        } else if sign == "-" {
+            numbers = numbers.replacingOccurrences(of: "-", with: "")
+            sign = "+"
+
+        }
+    }
     
     // TODO: enum 따로 파일로 빼기
     enum Keypad: Int, CaseIterable {

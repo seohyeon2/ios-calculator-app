@@ -101,6 +101,9 @@
                                                 <state key="normal" title="⁺⁄₋">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="tapToChangeSignButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Et-Mc-fVP"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tfz-eM-jll">
                                                 <rect key="frame" x="292.5" y="0.0" width="89.5" height="89.5"/>
@@ -208,7 +211,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="tapOperatorsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l6F-zh-ZAS"/>
+                                                    <action selector="tapOperatorsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MfS-qB-bkn"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -358,7 +361,7 @@
                         <outlet property="multiplicationButton" destination="811-Pz-An6" id="dXH-V1-juR"/>
                         <outlet property="operatorLabel" destination="HPC-iy-qdm" id="FB0-4I-rwu"/>
                         <outlet property="resultButton" destination="Daw-iX-Owl" id="uGd-ec-0AM"/>
-                        <outlet property="subtractionButton" destination="nTe-Sn-Pvd" id="8fY-0T-svB"/>
+                        <outlet property="subtractionButton" destination="nTe-Sn-Pvd" id="fYc-mO-nAR"/>
                         <outletCollection property="numbersButton" destination="mSz-Y3-r5Z" collectionClass="NSMutableArray" id="uch-dr-5Ri"/>
                         <outletCollection property="numbersButton" destination="nCE-qB-NiN" collectionClass="NSMutableArray" id="40P-fT-BD5"/>
                         <outletCollection property="numbersButton" destination="Rif-2S-UU2" collectionClass="NSMutableArray" id="GNj-V6-tOj"/>
