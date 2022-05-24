@@ -55,14 +55,6 @@ class ViewController: UIViewController {
         }
     }
     
-    // TODO: 누른 숫자 번호 보여주기
-    func updateLable(text: String) {
-        DispatchQueue.main.async {
-            self.inputNumberLabel
-            self.operatorLabel
-        }
-    }
-    
     // TODO: 연산자버튼을 한 곳에서 처리하는 메서드 생성
     // TODO: 어떤 연산자 버튼이 들어오는지 구별하기
     @IBAction func tapOperatorsButton(_ sender: UIButton) {
@@ -91,6 +83,8 @@ class ViewController: UIViewController {
             numbers = numbers.replacingOccurrences(of: "-", with: "")
             sign = "+"
         }
+        
+        inputNumberLabel.text = numbers
     }
     
     // TODO: 입력한 값 모두 삭제하기
@@ -131,6 +125,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async { }
     }
 }
 
