@@ -1,13 +1,22 @@
 import UIKit
 struct CalculatorManager {
+    
+    enum Notification {
+        static let operandDidChange = Foundation.Notification.Name("operandDidChange")
+        static let operatorDidChange = Foundation.Notification.Name("operatorDidChange")
+        static let removeDidChange = Foundation.Notification.Name("removeDidChange")
+        static let arithmeticDidChange =
+            Foundation.Notification.Name("arithmeticDidChange")
+    }
+    
     private var inputNumber = "" {
         didSet {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "operand"), object: convertFormat(inputNumber))
+            NotificationCenter.default.post(name: Notification.operandDidChange, object: convertFormat(inputNumber))
         }
     }
     private var inputOperator = "" {
         didSet {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "operator"), object: inputOperator)
+            NotificationCenter.default.post(name: Notification.operatorDidChange, object: inputOperator)
         }
     }
     private(set) var arithmetic = "" {
@@ -16,13 +25,13 @@ struct CalculatorManager {
             if arithmetic == "" {
                 sendValue = ""
             }
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "arithmetic"), object: sendValue)
+            NotificationCenter.default.post(name: Notification.arithmeticDidChange, object: sendValue)
         }
     }
     private var isPositiveNumber = true
     
     var isNumberEmpty: Bool {
-       return inputNumber.isEmpty || inputNumber == "0"
+        return inputNumber.isEmpty || inputNumber == "0"
     }
     var isArithmeticEmpty: Bool {
         return arithmetic.isEmpty
@@ -32,7 +41,7 @@ struct CalculatorManager {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.maximumSignificantDigits = 20
-
+        
         guard let double = Double(number) else {
             return ""
         }
@@ -68,7 +77,7 @@ struct CalculatorManager {
     mutating func removeAll() {
         resetCalculator()
         resetInput(inputNumber: true, inputOperator: true)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "remove"), object: "")
+        NotificationCenter.default.post(name: Notification.removeDidChange, object: "")
     }
     
     mutating func resetInput(inputNumber: Bool, inputOperator: Bool) {
