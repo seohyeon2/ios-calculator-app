@@ -59,6 +59,13 @@ final class CalculatorViewController: UIViewController {
         }
     }
     
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateInputOperatoreLabel), name: CalculatorManager.Notification.operandDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateInputOperatoreLabel), name: CalculatorManager.Notification.operatorDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateStackView), name: CalculatorManager.Notification.arithmeticDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(clearStackView), name: CalculatorManager.Notification.removeDidChange, object: nil)
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -66,14 +73,9 @@ final class CalculatorViewController: UIViewController {
         calculatorManager.resetCalculator()
         calculatorManager.resetInput(inputNumber: true, inputOperator: true)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateInputOperatoreLabel), name: CalculatorManager.Notification.operandDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateInputOperatoreLabel), name: CalculatorManager.Notification.operatorDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateStackView), name: CalculatorManager.Notification.arithmeticDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(clearStackView), name: CalculatorManager.Notification.removeDidChange, object: nil)
+        addObservers()
     }
-}
-
-extension CalculatorViewController {
+    
     @IBAction private func tapAllClearButton(_ sender: UIButton) {
         calculatorManager.removeAll()
     }
@@ -90,9 +92,7 @@ extension CalculatorViewController {
         calculatorManager.appendArithmetic()
         calculatorManager.resetInput(inputNumber: true, inputOperator: true)
     }
-}
-
-extension CalculatorViewController {
+    
     @IBAction private func tapKeypadButton(_ sender: UIButton) {
         guard let buttonIndex = keypad.firstIndex(of: sender) else { return }
         
